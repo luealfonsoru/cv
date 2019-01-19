@@ -13,9 +13,9 @@ Implementar al menos 6 ilusiones de tres tipos distintos (paradójicas, geométr
 
 Complete la tabla:
 
-| Integrante | github nick |
-|------------|-------------|
-|            |             |
+| Integrante                 |  github nick |
+|----------------------------|--------------|
+| Luis Enrique Alfonso Rubio | luealfonsoru |
 
 ## Discusión
 
@@ -23,14 +23,15 @@ Complete la tabla:
 
 | Ilusión | Categoria | Referencia | Tipo de interactividad (si aplica) | URL código base (si aplica) |
 |---------|-----------|------------|------------------------------------|-----------------------------|
-|         |           |            |                                    |                             |
-|         |           |            |                                    |                             |
+|Ilusión 1|Ambigua    |            | Cambio de perspectiva en la app    |                             |
+|Ilusión 2|Paradójica |            |                                    |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar:
+Perspectiva Bizantina, me gustaría profundizar en manejo de físicas en procesamiento gráfico y uso de perspectivas o estilos visuales artísticos
 
 ## Entrega
 
