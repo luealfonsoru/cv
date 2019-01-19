@@ -23,15 +23,15 @@ Complete la tabla:
 
 | Ilusión | Categoria | Referencia | Tipo de interactividad (si aplica) | URL código base (si aplica) |
 |---------|-----------|------------|------------------------------------|-----------------------------|
-|Ilusión 1|Ambigua    |            | Cambio de perspectiva en la app    |                             |
-|Ilusión 2|Paradójica |            |                                    |                             |
-|         |           |            |                                    |                             |
+|Ilusión 1|Ambigua    |            |Cambio de perspectiva en la app     |                             |
+|Ilusión 2|Geometrica |            |                                    |                             |
+|Ilusión 3|Psicológica|            |Subir imagen propia a la app        |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar:
-Perspectiva Bizantina, me gustaría profundizar en manejo de físicas en procesamiento gráfico y uso de perspectivas o estilos visuales artísticos
+Perspectiva Bizantina, me gustaría profundizar en manejo de físicas en procesamiento gráfico y uso de perspectivas o estilos visuales artísticos, y análisis de comportamientos de usuario en entornos tridimensionales
 
 ## Entrega
 
