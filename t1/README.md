@@ -26,7 +26,7 @@ Complete la tabla:
 |Ilusión 1|Ambigua    |            |Cambio de perspectiva en la app     |                             |
 |Ilusión 2|Geometrica |            |                                    |                             |
 |Ilusión 3|Psicológica|            |Subir imagen propia a la app        |                             |
-|         |           |            |                                    |                             |
+|Ilusion 4|Ambigua    |            |                                    |                             |
 |         |           |            |                                    |                             |
 |         |           |            |                                    |                             |
 
