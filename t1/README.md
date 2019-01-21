@@ -27,8 +27,8 @@ Complete la tabla:
 |Ilusión 2|Geometrica |            |                                    |                             |
 |Ilusión 3|Psicológica|            |Subir imagen propia a la app        |                             |
 |Ilusion 4|Ambigua    |            |                                    |                             |
-|         |           |            |                                    |                             |
-|         |           |            |                                    |                             |
+|Ilusion 5|Geométrica |            |                                    |                             |
+|Ilusion 6|Ambigua    |            |                                    |                             |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar:
 Perspectiva Bizantina, me gustaría profundizar en manejo de físicas en procesamiento gráfico y uso de perspectivas o estilos visuales artísticos, y análisis de comportamientos de usuario en entornos tridimensionales
