@@ -2,7 +2,7 @@ class Line{
   public Frame frame;
   float vertexPoints[], zPos;
   Line(int depth){
-    vertexPoints = fastft[depth];
+    vertexPoints = fastft[abs(depth-1)];
     zPos = depth;
     frame = new Frame(scene){
       @Override

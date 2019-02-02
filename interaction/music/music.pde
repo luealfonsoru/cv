@@ -4,9 +4,13 @@ import frames.processing.*;
 import processing.sound.*;
 
 FFT fft;
+FFT fft2;
 AudioIn in;
+SoundFile song;
 int bands = 512;
 float[] spectrum = new float[bands];
+float[] spectrum2 = new float[bands];
+int mode = 0; 
 
 Scene scene;
 ArrayList<Line> lines;
@@ -27,20 +31,39 @@ void setup(){
   lines.add(new Line(1));
   lines.add(new Line(2));
   fft = new FFT(this, bands);
+  fft2 = new FFT(this, bands);
   in = new AudioIn(this, 0);
+  song = new SoundFile(this, "song.mp3");
   
   // start the Audio Input
   in.start();
-  
+ 
+  if(mode == 1){
+    song.loop();
+    song.rate(1.1);
+  }
   // patch the AudioIn
   fft.input(in);
+  fft2.input(song);
+
 }
 
 void draw(){
   background(0);
-  fft.analyze(spectrum);
+  if(mode == 0){
+    fft.analyze(spectrum);
+  }else{
+    fft2.analyze(spectrum);
+  }
+  
   ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, 0, 1, -100);
+    for(int i = 0; i < bands/4; i++){
+      fastft[0][i] = -spectrum[i]*1000;
+      fastft[1][i] = -spectrum[i+bands/4]*1000;
+      fastft[2][i] = fastft[0][i];
+    }  
+  
   for(int i = 0; i < bands/4; i++){
     fastft[0][i] = -spectrum[i]*1000;
     fastft[1][i] = -spectrum[i+bands/4]*1000;
