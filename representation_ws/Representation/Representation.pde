@@ -35,6 +35,7 @@ boolean avoidWalls = true;
 
 int initBoidNum = 900; // amount of boids to start the program with
 ArrayList<Boid> flock;
+Curve curve;
 Frame avatar;
 boolean animate = true;
 
@@ -47,6 +48,9 @@ void setup() {
   flock = new ArrayList();
   for (int i = 0; i < initBoidNum; i++)
     flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2)));
+  print(flock.get(1).position.x());
+  //create a curve with flocks as reference points; use 0 as last parameter for beziel, and 1 for hermite 
+  curve = new Curve(flock.get(0),flock.get(1),flock.get(3),flock.get(4),0);
 }
 
 void draw() {
