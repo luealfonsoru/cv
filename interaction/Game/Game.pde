@@ -16,16 +16,18 @@ Frame frame, camera;
 
 //Game level and menus
 Level level;
+Background back;
 //Bar bar;
 Character character;
 boolean playing = false;
 int initialAnimation = 0;
-//PitchDetectorAutocorrelation PD; //Autocorrelation
+PitchDetectorAutocorrelation PD; //Autocorrelation
 //PitchDetectorHPS PD; //Harmonic Product Spectrum -not working yet-
-PitchDetectorFFT PD; // Naive
-//ToneGenerator TG;
+//PitchDetectorFFT PD; // Naive
+ToneGenerator TG;
 AudioSource AS;
 Minim minim;
+boolean addX = false, restX = false;
 
 //Some arrays just to smooth output frequencies with a simple median.
 float []freq_buffer = new float[10];
@@ -46,6 +48,11 @@ int octave = 0, note=0;
 float frec;
 
 int time;
+float xpos = 0;
+
+PShader toonShader;
+Graph.Type shadowMapType = Graph.Type.ORTHOGRAPHIC;
+PGraphics shadowMap;
 
 void setup(){
   size(1200,700,P3D);
@@ -54,6 +61,8 @@ void setup(){
   
   scene = new Scene(this);
   level = new Level();
+  camera = new Frame(scene);
+  back = new Background();
   //bar = new Bar(11,60,1);
   toneFrec = new float[5][11];
   notes = new float[5][11];
@@ -62,17 +71,27 @@ void setup(){
 
   AS = new AudioSource(minim);
   AS.OpenMicrophone();
-  //PD = new PitchDetectorAutocorrelation();
-  PD = new PitchDetectorFFT();
-  PD.ConfigureFFT(2048, AS.GetSampleRate());
+  PD = new PitchDetectorAutocorrelation();
+  //PD = new PitchDetectorFFT();
+  //PD.ConfigureFFT(2048, AS.GetSampleRate());
   PD.SetSampleRate(AS.GetSampleRate());
   AS.SetListener(PD);
-  //TG = new ToneGenerator (minim, AS.GetSampleRate());
+  camera.setPosition(new Vector(170,0,300));
+  TG = new ToneGenerator (minim, AS.GetSampleRate());
   poblateTones();
+  toonShader = loadShader("toonShader.glsl");
+  toonShader.set("near",50);
+  toonShader.set("far",5000);
+  
 }
 
 void draw(){
   background(4,12,36);
+  ambientLight(128, 128, 128);
+  directionalLight(255, 255, 255, -512+xpos*10000, xpos*10000, -175);
+  camera.setPosition(new Vector(170,0,300));
+  scene.eye().setReference(camera);
+  scene.fit(camera);
   scene.drawAxes();
   scene.traverse();
   if(playing){
@@ -83,6 +102,8 @@ void draw(){
     float slevel = AS.GetLevel();
     long t = PD.GetTime();
     boolean selectedNote = false;
+    xpos = slevel;
+    //print(xpos);
     if (t == last_t) return;
     last_t = t;
     if(slevel >=0.01){
@@ -99,8 +120,8 @@ void draw(){
   
     f = sorted[5];*/
     frec = f;
-    //TG.SetFrequency(f);
-    //TG.SetLevel(slevel * 10.0);
+    TG.SetFrequency(f);
+    TG.SetLevel(slevel * 10.0);
     //print(f,"  ");
     //stroke(level * 255.0 * 10.0);
     //line(xpos, height, xpos, height - f / 5.0f);
@@ -111,12 +132,19 @@ void draw(){
         if(!selectedNote && f < notes[i][j]){
           selectedNote = true;
           note=j*(i%2 + 1);
-          print(notes[i][j], "    ",i,"    ",j,"    ",note,"   ,");
+          //print(notes[i][j], "    ",i,"    ",j,"    ",note,"   ,");
         }
       }
     }
-    
   }
+  //if(addX){
+  //    xpos = xpos + 1;
+  //    print("x = ",xpos);
+  //  }
+  //  if(restX){
+  //    xpos = xpos - 1;
+  //    print("x = ",xpos);
+  //  }
 }
 
 void keyPressed(){
@@ -124,6 +152,14 @@ void keyPressed(){
     case 'w':
       playing = !playing;
     break;
+    case 'z':
+      addX = !addX;
+      restX = false;
+    break;
+    case 'x':
+      restX = !restX;
+      addX = false;
+      print("x = ",restX);
   }
 }
 
@@ -151,3 +187,9 @@ void poblateTones(){
 void currentNote(){
   
 }
+
+
+//void mouseWheel(MouseEvent event) {
+//  // same as: scene.scale(event.getCount() * 20, scene.eye());
+//  scene.scale(event.getCount() * 200);
+//}

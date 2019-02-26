@@ -36,20 +36,22 @@ class Level{
     float noteLen = 1;
     currentNote = note;
     setupBar();
-    //bar = new Frame(level){
-    //  @Override
-    //  public void visit(){
-    //    renderBar();
-    //  }
-    //};
+    bar = new Frame(level){
+      @Override
+      public void visit(){
+        renderBar();
+      }
+    };
     characterShape = createShape(SPHERE,10);    
     characterShape.setStroke(false);    
   }
   
  void setupBar(){
-    bottomBar = createShape(BOX,10,20*currentNote,10);
-    topBar = createShape(BOX,10,200,10);
-    bottomBar.translate(0,20*(currentNote+1),0);
+    //bottomBar = createShape(BOX,20,500,20);
+    topBar = createShape(BOX,20,500,20);
+    topBar.setStroke(false);   
+    //bottomBar.translate(0,100,0);
+    topBar.translate(0,-500,0);
   }
   
   void renderCharacter(){
@@ -60,7 +62,7 @@ class Level{
   }
   
  void renderBar(){
-    shape(bottomBar);
+    //shape(bottomBar);
     shape(topBar);
   }
   
