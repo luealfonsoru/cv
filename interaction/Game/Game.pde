@@ -21,9 +21,9 @@ Background back;
 Character character;
 boolean playing = false;
 int initialAnimation = 0;
-PitchDetectorAutocorrelation PD; //Autocorrelation
+//PitchDetectorAutocorrelation PD; //Autocorrelation
 //PitchDetectorHPS PD; //Harmonic Product Spectrum -not working yet-
-//PitchDetectorFFT PD; // Naive
+PitchDetectorFFT PD; // Naive
 ToneGenerator TG;
 AudioSource AS;
 Minim minim;
@@ -50,9 +50,9 @@ float frec;
 int time;
 float xpos = 0;
 
-PShader toonShader;
-Graph.Type shadowMapType = Graph.Type.ORTHOGRAPHIC;
-PGraphics shadowMap;
+PShader munchShader;
+//Graph.Type shadowMapType = Graph.Type.ORTHOGRAPHIC;
+//PGraphics shadowMap;
 
 void setup(){
   size(1200,700,P3D);
@@ -71,17 +71,18 @@ void setup(){
 
   AS = new AudioSource(minim);
   AS.OpenMicrophone();
-  PD = new PitchDetectorAutocorrelation();
-  //PD = new PitchDetectorFFT();
-  //PD.ConfigureFFT(2048, AS.GetSampleRate());
+  //PD = new PitchDetectorAutocorrelation();
+  PD = new PitchDetectorFFT();
+  PD.ConfigureFFT(2048, AS.GetSampleRate());
   PD.SetSampleRate(AS.GetSampleRate());
   AS.SetListener(PD);
   camera.setPosition(new Vector(170,0,300));
   TG = new ToneGenerator (minim, AS.GetSampleRate());
   poblateTones();
-  toonShader = loadShader("toonShader.glsl");
-  toonShader.set("near",50);
-  toonShader.set("far",5000);
+  munchShader = loadShader("munchShader.glsl");
+  //toonShader = loadShader("toonShader.glsl");
+  //toonShader.set("near",50);
+  //toonShader.set("far",5000);
   
 }
 
@@ -89,6 +90,7 @@ void draw(){
   background(4,12,36);
   ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, -512+xpos*10000, xpos*10000, -175);
+  //munchShader.set("u_time",millis());
   camera.setPosition(new Vector(170,0,300));
   scene.eye().setReference(camera);
   scene.fit(camera);

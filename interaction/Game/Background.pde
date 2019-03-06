@@ -15,6 +15,9 @@ class Background{
     myBack = createShape(BOX,800,600,2);
   }
   void render(){
+    pushStyle();
+    shader(munchShader);
     shape(myBack);
+    popStyle();
   }
 }
