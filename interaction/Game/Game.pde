@@ -47,7 +47,7 @@ int octave = 0, note=0;
 
 float frec;
 
-int time;
+float time;
 float xpos = 0;
 
 PShader munchShader;
@@ -57,7 +57,6 @@ PShader munchShader;
 void setup(){
   size(1200,700,P3D);
   frameRate(30);
-  time = millis();
   
   scene = new Scene(this);
   level = new Level();
@@ -87,10 +86,12 @@ void setup(){
 }
 
 void draw(){
-  background(4,12,36);
-  ambientLight(128, 128, 128);
+  background(255,128,0);
+  //ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, -512+xpos*10000, xpos*10000, -175);
-  //munchShader.set("u_time",millis());
+  time = (float) millis();
+  munchShader.set("u_time",time/2000.0);
+  munchShader.set("u_resolution",1280.0,720.0);
   camera.setPosition(new Vector(170,0,300));
   scene.eye().setReference(camera);
   scene.fit(camera);
