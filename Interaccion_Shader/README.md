@@ -26,7 +26,7 @@ Complete la tabla:
 ## Informe
 
 ### Introducción
-Se realizón una aplicación interactiva que usando un micrófono como método de entrada, modifica la posición de un personaje mediante los tonos que se ingresen.
+Se realizó una aplicación interactiva que usando un micrófono como método de entrada, modifica la posición de un personaje mediante los tonos que se ingresen.
 
 ### Estructura
 Se tiene una escena proncipal del juego, a la cual se encuentra anidado el frame "level" que a su vez tiene anidados los frames "character" que es el personaje con el que se interactúa y el frame "bar" que tiene un ancho determinado y está contituido por dos box shapes separados a una distancia determinada: este además se desplaza por el escenario con una velocidad determinada. Desde el punto de vista musical, la altura del level significa los diferentes tonos o notas musicales, el ancho de la barra la longitud de la nota y la velocidad de la barra los BPM de la canción
