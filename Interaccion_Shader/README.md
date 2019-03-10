@@ -19,17 +19,17 @@ Complete la tabla:
 
 |  Integrante  | github nick |  Grupo  |
 |--------------|-------------|---------|
-| Ángel Rendón |             |L-C 9-11 |
-| Diego Cruz   |             |L-C 9-11 |
+| Ángel Rendón |mesirendon   |L-C 9-11 |
+| Diego Cruz   |diegocruz10  |L-C 9-11 |
 | Luis Alfonso |luealfonsoru |M-J 9-11 |
 
 ## Informe
 
 ### Introducción
-Se realizó una aplicación interactiva que usando un micrófono como método de entrada, modifica la posición de un personaje mediante los tonos que se ingresen.
+Se realizó una aplicación interactiva que usando un micrófono como método de entrada, se modifica la posición de un personaje mediante los tonos que se ingresen.
 
 ### Estructura
-Se tiene una escena proncipal del juego, a la cual se encuentra anidado el frame "level" que a su vez tiene anidados los frames "character" que es el personaje con el que se interactúa y el frame "bar" que tiene un ancho determinado y está contituido por dos box shapes separados a una distancia determinada: este además se desplaza por el escenario con una velocidad determinada. Desde el punto de vista musical, la altura del level significa los diferentes tonos o notas musicales, el ancho de la barra la longitud de la nota y la velocidad de la barra los BPM de la canción
+Se tiene una escena principal del juego, a la cual se encuentra anidado el frame "level" que a su vez tiene anidados los frames "character" que es el personaje con el que se interactúa y el frame "bar" que tiene un ancho determinado y está contituido por dos box shapes separados a una distancia determinada: este además se desplaza por el escenario con una velocidad determinada. Desde el punto de vista musical, la altura del level significa los diferentes tonos o notas musicales, el ancho de la barra la longitud de la nota y la velocidad de la barra los BPM de la canción
 ### Interacción
 El frame character se desplaza verticalmente por la escena dependiendo del tono que el usuaio ingrese por medio del micrófono, la detección se logra por medio de la transformada rápida de fourier y correlación de tonos. El juego consiste en cantar un tono determinado para evitar que el personaje chocque con las barras que se desplazan horizontalmente en el escenario. Usamos un sistema de cámara fija y perspectiva "pseudo" isométrica. 
 ### Shaders
