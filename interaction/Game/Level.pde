@@ -35,7 +35,8 @@ class Level{
     bps = bpm/60;
     float noteLen = 1;
     currentNote = note;
-    setupBar();
+    setupBar(5,1);
+    setupBar(9,5);
     bar = new Frame(level){
       @Override
       public void visit(){
@@ -46,12 +47,13 @@ class Level{
     characterShape.setStroke(false);    
   }
   
- void setupBar(){
-    //bottomBar = createShape(BOX,20,500,20);
-    topBar = createShape(BOX,20,500,20);
-    topBar.setStroke(false);   
-    //bottomBar.translate(0,100,0);
-    topBar.translate(0,-500,0);
+ void setupBar(int tone, int distance){
+    bottomBar = createShape(BOX,40,500,20);
+    bottomBar.setStroke(false);
+    topBar = createShape(BOX,40,500,20); 
+    topBar.setStroke(false);
+    bottomBar.translate(500+distance*40,tone*10,0);
+    topBar.translate(500+distance*40,-500+tone*10-40,0);
   }
   
   void renderCharacter(){
@@ -62,8 +64,11 @@ class Level{
   }
   
  void renderBar(){
-    //shape(bottomBar);
+    shape(bottomBar);
+    noStroke();
     shape(topBar);
+    bottomBar.translate(-time/10000,0,0);
+    topBar.translate(-time/10000,0,0);
   }
   
 }

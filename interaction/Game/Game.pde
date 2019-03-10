@@ -76,9 +76,9 @@ void setup(){
   PD.SetSampleRate(AS.GetSampleRate());
   AS.SetListener(PD);
   camera.setPosition(new Vector(170,0,300));
-  TG = new ToneGenerator (minim, AS.GetSampleRate());
+  //TG = new ToneGenerator (minim, AS.GetSampleRate());
   poblateTones();
-  munchShader = loadShader("munchShader.glsl");
+  munchShader = loadShader("munchShader.glsl","munchVertex.glsl");
   //toonShader = loadShader("toonShader.glsl");
   //toonShader.set("near",50);
   //toonShader.set("far",5000);
@@ -86,7 +86,7 @@ void setup(){
 }
 
 void draw(){
-  background(255,128,0);
+  background(0,0,0);
   //ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, -512+xpos*10000, xpos*10000, -175);
   time = (float) millis();
@@ -95,7 +95,7 @@ void draw(){
   camera.setPosition(new Vector(170,0,300));
   scene.eye().setReference(camera);
   scene.fit(camera);
-  scene.drawAxes();
+  //scene.drawAxes();
   scene.traverse();
   if(playing){
     if (begin_playing_time == -1)
@@ -123,8 +123,8 @@ void draw(){
   
     f = sorted[5];*/
     frec = f;
-    TG.SetFrequency(f);
-    TG.SetLevel(slevel * 10.0);
+    //TG.SetFrequency(f);
+    //TG.SetLevel(slevel * 10.0);
     //print(f,"  ");
     //stroke(level * 255.0 * 10.0);
     //line(xpos, height, xpos, height - f / 5.0f);
@@ -189,6 +189,18 @@ void poblateTones(){
 
 void currentNote(){
   
+}
+
+void mouseDragged() {
+  if (scene.eye().reference() == null)
+    if (mouseButton == LEFT)
+      // same as: scene.spin(scene.eye());
+      scene.spin();
+    else if (mouseButton == RIGHT)
+      // same as: scene.translate(scene.eye());
+      scene.translate();
+    else
+      scene.moveForward(mouseX - pmouseX);
 }
 
 

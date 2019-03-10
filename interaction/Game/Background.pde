@@ -16,6 +16,6 @@ class Background{
   }
   void render(){
     shader(munchShader);
-    shape(myBack);
+    //shape(myBack);
   }
 }
