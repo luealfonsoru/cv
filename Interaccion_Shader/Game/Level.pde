@@ -5,6 +5,8 @@ class Level{
   PShape characterShape;
   int currentNote;
   float bps, noteLenght;
+  PShape [] bottomBars = new PShape [100];
+  PShape [] topBars = new PShape [100];
   
   Level(){
     level = new Frame(scene){
@@ -35,8 +37,8 @@ class Level{
     bps = bpm/60;
     float noteLen = 1;
     currentNote = note;
-    setupBar(5,1);
-    setupBar(9,5);
+    setupBar(abs(random(12)),1);
+
     bar = new Frame(level){
       @Override
       public void visit(){
@@ -47,13 +49,25 @@ class Level{
     characterShape.setStroke(false);    
   }
   
- void setupBar(int tone, int distance){
-    bottomBar = createShape(BOX,40,500,20);
-    bottomBar.setStroke(false);
-    topBar = createShape(BOX,40,500,20); 
-    topBar.setStroke(false);
-    bottomBar.translate(500+distance*40,tone*10,0);
-    topBar.translate(500+distance*40,-500+tone*10-40,0);
+void createBar(float time){
+  float myRandom = abs(random(12));
+  translate(500+40-time,myRandom*10,0);
+  box(40,500,20);
+  translate(500+40,-500+myRandom*10-40,0);
+  box(40,500,20);
+    
+}
+  
+ void setupBar(float tone, int distance){
+   for (int i = 0; i<100; i++){
+    float myRandom = abs(random(10)); 
+    bottomBars[i] = createShape(BOX,40,500,20);
+    bottomBars[i].setStroke(false);
+    topBars[i] = createShape(BOX,40,500,20); 
+    topBars[i].setStroke(false);
+    bottomBars[i].translate(500+distance*40 + i*200,100+myRandom*10,0);
+    topBars[i].translate(500+distance*40+ i*200,-400+myRandom*10-80,0);   
+   }
   }
   
   void renderCharacter(){
@@ -64,11 +78,20 @@ class Level{
   }
   
  void renderBar(){
-    shape(bottomBar);
+   for(int i=0;i<100;i++){
+    shape(bottomBars[i]);
     noStroke();
-    shape(topBar);
-    bottomBar.translate(-time/10000,0,0);
-    topBar.translate(-time/10000,0,0);
+    shape(topBars[i]);
+    bottomBars[i].translate(-time/10000,0,0);
+    topBars[i].translate(-time/10000,0,0);
+   }
+      //float myRandom = abs(random(12));
+      //for(int i=0; i<1000; i++){
+      //  translate(-1,8*10,0);
+      //  box(40,500,20);
+      //  translate(-1,-500+8*10-40,0);
+      //  box(40,500,20);
+      //}
   }
   
 }

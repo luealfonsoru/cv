@@ -85,8 +85,8 @@ void setup(){
   
 }
 
-void draw(){
-  background(0,0,0);
+void draw(){  
+  background(0,0,100);
   //ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, -512+xpos*10000, xpos*10000, -175);
   time = (float) millis();

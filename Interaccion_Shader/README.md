@@ -1,5 +1,8 @@
 # Taller de shaders
 
+##Librerías
+El proyecto usa la librería Minim para la tranformada de Fourier y Frames para la estructura de la escena que pueden ser encontradas en el repositorio de librerias de Processing
+
 ## Propósito
 
 Estudiar los [patrones de diseño de shaders](http://visualcomputing.github.io/Shaders/#/4).
